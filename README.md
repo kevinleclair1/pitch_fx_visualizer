@@ -10,5 +10,5 @@ To get started:
 
 ```bash
 npm install
-npm run server:start & npm start
+npm start
 ```

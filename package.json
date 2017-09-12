@@ -15,6 +15,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.3.14",
     "cheerio": "^0.22.0",
+    "concurrently": "^3.5.0",
     "cornelius": "^1.0.1",
     "cors": "^2.8.3",
     "express": "4.13.3",
@@ -40,12 +41,13 @@
     "reselect": "^3.0.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "concurrently \"npm run start:front_end\" \"npm run start:back_end\"",
+    "start:front_end": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "publish": "npm run build && gh-pages -d build",
-    "server:start": "NODE_ENV=development nodemon --watch server ./server/index.js",
-    "server:debug": "NODE_ENV=development nodemon --watch server --inspect=5858 ./server/index.js"
+    "start:back_end": "NODE_ENV=development nodemon --watch server ./server/index.js",
+    "start:back_end:debug": "NODE_ENV=development nodemon --watch server --inspect=5858 ./server/index.js"
   },
   "proxy": "http://localhost:3001",
   "repository": {
